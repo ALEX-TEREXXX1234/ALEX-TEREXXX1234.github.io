@@ -1,0 +1,130 @@
+<html>
+<head>
+<title> Экспертные системы. Тестовые задания </title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<SCRIPT language=JavaScript>
+<!--
+da=0;da1=0
+function wda(){
+da++
+if ((da==1200)&&(da1!=1)){
+da=0; da1=1;
+alert("Ваше время истекло. Результаты теста - в конце страницы.")
+w()
+document.location.href="#down"}
+else setTimeout("wda()",1000)
+}
+wda()
+
+br="\n"
+if (navigator.appVersion.lastIndexOf('Win')!=-1) br="\r\n"
+function w(){
+da1=1;
+N=10;
+u0=new Array();		res="1224344132"
+u2=new Array();
+tr=N;
+k=0;
+oce=0;
+oce1=1;
+un=""
+re=1;
+ for (var i=1; i<=N;i++){ u0[i]=-1;
+   for (var j=0; j<4;j++){if (eval("document.f1.i"+i+"["+j+"].checked==true")) u0[i]=j+1;}
+      if (u0[i]!=res.charAt(i-1)){tr--;k++;u2[k]=i;}
+       }
+ 
+ oce=100*tr/N; 
+ if (k>0){un="Неверные ответы на вопросы:"+br;for (i=1;i<k;i++){un=un+" "+u2[i]+",";if(Math.round(i/30)*30==i) un=un+br}; un=un+" "+u2[k]+"."}
+ if (tr>2) oce1=2;
+ if (tr>4) oce1=3;
+ if (tr>6) oce1=4;
+ if (tr>8) oce1=5;
+ document.f2.t2.value="Оценка: "+oce1+"."+br+"Правильных ответов "+tr+" из "+N+". "+br+un;
+ document.f1.btn.disabled = true;
+}
+
+//-->
+</SCRIPT>
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR></head>
+
+<body bgcolor="#FFCC99">
+<div align="center">
+<H2>Тестовые задания по теме №6</H2>
+<font color="000000" size="+1">
+</div>
+
+<form name=f1>
+      <BR>
+      Время выполнения - 20 мин. 
+      <OL><BR>
+        <LI> Человек, имеющий цель, которая служит мотивом постановки задачи и поиска ее решения, это —
+          <br><INPUT type=radio value=1 name=i1> а) ЛПР (лицо, принимающее решение);
+          <br><INPUT type=radio value=2 name=i1> б) эксперт;
+          <br><INPUT type=radio value=3 name=i1> в) консультант;
+          <br><INPUT type=radio value=4 name=i1> г) абитуриент;
+<br><br>
+          <br><LI> Специалист, имеющий информацию о рассматриваемой задаче, но не несущий непосредственной ответственности за результат ее решения, это —
+          <br><INPUT type=radio value=1 name=i2> а) ЛПР;
+          <br><INPUT type=radio value=2 name=i2> б) эксперт;
+          <br><INPUT type=radio value=3 name=i2> в) консультант;
+          <br><INPUT type=radio value=4 name=i2> г) абитуриент;
+<br><br>                                        
+          <br><LI> Кто из нижеперечисленных несет наименьшую ответственность за принятое решение?
+          <br><INPUT type=radio value=1 name=i3> а) ЛПР;
+          <br><INPUT type=radio value=2 name=i3> б) эксперт;
+          <br><INPUT type=radio value=3 name=i3> в) консультант;
+          <br><INPUT type=radio value=4 name=i3> г) не знаю;
+<br><br>
+          <br><LI> Назовите этапы жизненного цикла любой сложной технической системы:
+          <br><INPUT type=radio value=1 name=i4> а) проектирование, детализация, эксплуатация;
+          <br><INPUT type=radio value=2 name=i4> б) конструирование, проектирование, эксплуатация;
+          <br><INPUT type=radio value=3 name=i4> в) проектирование, систематизация, тестирование;
+          <br><INPUT type=radio value=4 name=i4> г) проектирование, производство, эксплуатация;
+<br><br>
+          <br><LI> Первое звено в управленческой деятельности:
+          <br><INPUT type=radio value=1 name=i5> а) реализация СТПР;
+          <br><INPUT type=radio value=2 name=i5> б) сбор информации;
+          <br><INPUT type=radio value=3 name=i5> в) «начальный толчок»;
+          <br><INPUT type=radio value=4 name=i5> г) выработка управления;
+<br><br>
+          <br><LI> 	Назовите число фаз цикла управления?
+          <br><INPUT type=radio value=1 name=i6> а) 5;
+          <br><INPUT type=radio value=2 name=i6> б) 4;
+          <br><INPUT type=radio value=3 name=i6> в) 7;
+          <br><INPUT type=radio value=4 name=i6> г) 6;
+<br><br>
+          <br><LI> Оперативные задачи применяются:
+          <br><INPUT type=radio value=1 name=i7> а) при основном производстве;
+          <br><INPUT type=radio value=2 name=i7> б) при вспомогательном производстве;
+          <br><INPUT type=radio value=3 name=i7> в) при материально обеспечении (спонсор);
+          <br><INPUT type=radio value=4 name=i7> г) при технической подготовке производства;
+<br><br>
+          <br><LI> Сфера управления отдела (цеха):
+          <br><INPUT type=radio value=1 name=i8> а) техническая подготовка производства;
+          <br><INPUT type=radio value=2 name=i8> б) вспомогательное производство;
+          <br><INPUT type=radio value=3 name=i8> в) материально-техническое обеспечение;
+          <br><INPUT type=radio value=4 name=i8> г) основное производство;
+<br><br>
+          <br><LI> Стадии жизненного цикла «Проектирование» соответствует фаза цикла управления:
+          <br><INPUT type=radio value=1 name=i9> а) контроль эффективности;
+          <br><INPUT type=radio value=2 name=i9> б) выработка управления;
+          <br><INPUT type=radio value=3 name=i9> в) выявление СТПР;
+          <br><INPUT type=radio value=4 name=i9> г) реализация решений;
+<br><br>
+          <br><LI> Тема данного урока:
+          <br><INPUT type=radio value=1 name=i10> а) Модели представления знаний;
+          <br><INPUT type=radio value=2 name=i10> б) Особенности управления на основе ЭС;
+          <br><INPUT type=radio value=3 name=i10> в) Методы извлечения и приобретения знаний;
+          <br><INPUT type=radio value=4 name=i10> г) Инструментальные средства разработки ЭС;
+<br><br>
+      </LI></OL>
+<center>
+<INPUT TYPE=button name=btn VALUE="Показать результат" onClick="javascript:w()">
+</form>
+<br>
+<form name=f2>
+<Textarea name=t2 rows=8 cols=40 readonly> Результат тестирования будет здесь. </Textarea>
+</form>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Экспертные системы. Урок №7</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFCC99">
+<blockquote> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="003_1.htm" target="_self" onClick="MM_nbGroup('down','group1','Back','',1)" onMouseOver="MM_nbGroup('over','Back','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Back.gif" alt="" name="Back" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="003.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="003_3.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  
+</blockquote>
+<p align="center"><strong><font size="5"><em>Задачи обработки результатов экспертизы</em></font></strong></p>
+<p align="justify">После того как группа экспертов закончит работу (или один из 
+  этапов работы), экспертиза вступает в новую фазу - фазу анализа мнений экспертов 
+  и определения результирующего, коллективного, мнения всей группы. Именно это 
+  результирующее мнение и, возможно, некоторая вспомогательная информация поступают 
+  либо к ЛПР, которое на основе этого мнения принимает окончательное решение, 
+  либо снова в группу экспертов, если экспертиза содержит ряд туров.<br>
+  Первая задача, которая возникает на этой фазе экспертизы, заключается в следующем: 
+  на множестве мнений экспертов необходимо &quot;навести определенный порядок&quot;, 
+  т.е. найти критерий, на основе которого можно сравнивать мнения отдельных экспертов, 
+  устанавливать степень близости этих мнений. Говорят, что в этом случае на множестве 
+  мнений определяется метрика или чаще - мера близости.<br>
+  Вторая задача, которая возникает на этапе обработки результатов экспертизы, 
+  состоит в следующем: имея меру близости, на множестве возможных мнений экспертов 
+  найти результирующее мнение, близкое в некотором смысле ко всем мнениям экспертов, 
+  участвующих в экспертизе. Обычно эта задача имеет оптимизационный характер. 
+  Будем называть итоговое мнение результирующим или оптимальным мнением группы 
+  экспертов.<br>
+  При некоторых способах проведения экспертизы, например, если она реализуется 
+  по методу Дельфи, возникает третья задача: имея оптимальное мнение и меру близости, 
+  найти наиболее близкое и наиболее далекое, по сравнению с оптимальным, мнения 
+  экспертов.<br>
+</p>
+<blockquote> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="003_1.htm" target="_self" onClick="MM_nbGroup('down','group1','Back','',1)" onMouseOver="MM_nbGroup('over','Back','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Back.gif" alt="" name="Back" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="003.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="003_3.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  <p align="justify">&nbsp;</p>
+</blockquote>
+</body>
+</html>

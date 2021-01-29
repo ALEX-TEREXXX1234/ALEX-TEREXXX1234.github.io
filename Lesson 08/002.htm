@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Экспертные системы. Урок №5</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFCC99">
+<blockquote> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="001.htm" target="_self" onClick="MM_nbGroup('down','group1','Back','',1)" onMouseOver="MM_nbGroup('over','Back','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Back.gif" alt="" name="Back" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="main07.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="003.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  
+</blockquote>
+<p align="center"><font size="5"><strong>Структура диалога: составляющие диалогового 
+  процесса принятия решений</strong></font></p>
+<p align="justify">Процесс разработки ДС, предназначенных для проведения экспертизы, 
+  необходимо начинать с анализа структуры информационных процессов, имеющих место 
+  при проведении экспертизы.<br>
+  Рассмотрим основные этапы принятия решения с помощью экспертов.<br>
+  1. ЛПР формулирует проблему, решение которой можно получить экспертным методом.<br>
+  2. Боли есть необходимость, проблема разбивается на ряд взаимосвязанных проблем.<br>
+  3. Формируются альтернативы (если их нет), с помощью которых можно решить проблему.<br>
+  4. Осуществляется подбор экспертов.<br>
+  5. Выбирается метод организации экспертизы (метод комиссий, метод суда, метод 
+  Дельфи и т.п.).<br>
+  6. Выбирается метод экспертного оценивания (метод парных сравнений, ранжирование, 
+  классификация и т.д.).<br>
+  Выбор метода зависит и от того, целесообразно ли проводить качественную или 
+  же количественную оценку альтернатив.<br>
+  7. В соответствии с выбранным методом организации экспертизы и методом оценивания 
+  альтернатив формируется процедура опроса экспертов.<br>
+  8. Осуществляется опрос экспертов.<br>
+  9. Осуществляется обработка мнений экспертов (выбираются результирующие отношения 
+  предпочтения).<br>
+  10. Оценивается качество экспертизы.<br>
+  11. Принимается решение ЛПР полученного отношения предпочтения.<br>
+  При решении практических задач экспертным методом некоторые этапы из перечисленных 
+  могут отсутствовать или же могут располагаться в другой последовательности. 
+  Приведенная последовательность этапов экспертизы служит для того, чтобы определить, 
+  каким образом можно распределить различные функции между ЛПР; экспертом и вычислительной 
+  системой, обеспечивающей участников экспертизы диалоговыми средствами.<br>
+  В силу особенностей работы ЛПР и того, что он, как правило, не имеет достаточной 
+  подготовки в области программно-математических методов, его диалоговые средства 
+  доступа должны отвечать следующим требованиям:<br>
+  1. Диалоговая система должна воспринимать сообщения и выдавать их на языке, 
+  близком к естественному, или же в форме, требующей минимальной подготовки;<br>
+  2. Диалоговая система должна быть подключена к информационно-справочной системе.<br>
+  3. Для работы с пакетами программ экспертного оценивания необходимы специальные 
+  программно-математические средства, позволяющие инициировать начало экспертизы 
+  и получать в удобной форме ее результаты.<br>
+  4. Диалоговые средства ЛПР должны позволять ему осуществлять подбор экспертов.<br>
+  В отличие от ЛПР эксперты должны иметь несколько иную форму диалога, что обусловливается 
+  особенностями задач, стоящих перед нами. С другой стороны, эксперт, как и ЛПР, 
+  также может иметь слабую подготовку в области программно-математических методов, 
+  что приводит к необходимости создания диалоговых форм доступа, обладающих простотой 
+  и удобством. Можно отметить следующие требования, которые необходимо учитывать 
+  при разработке диалоговых средств для экспертов:<br>
+  1. С помощью своих диалоговых средств эксперт должен иметь возможность получать 
+  вспомогательную информацию как об объекте экспертизы, так и о ее результате.<br>
+  2. Сбор данных от экспертов должен осуществляться автоматически, по ранее разработанным 
+  алгоритмам.<br>
+  3. Свои ответы эксперт должен помещать в специальные формы документов, которые 
+  ему выдаются на экран дисплея.<br>
+  В силу того, что, как и эксперт, ЛПР не является специалистом в области применения 
+  программно-математических методов, желательно присутствие специалиста-системотехника 
+  (консультанта, референта), который мог бы помочь ЛПР формализовать проблему, 
+  мог бы выбрать наиболее приемлемый метод организации экспертизы и метод оценки 
+  альтернатив. Такой специалист должен иметь достаточно высокую подготовку в области 
+  программирования и теории экспертного оценивания.<br>
+  К его задачам следует отнести и &quot;настройку&quot; математических моделей, 
+  применяемых при экспертизе. Общая схема такой системы принятия решений может 
+  быть представлена в виде, приведенном на рис. 3.2.<br>
+  <img src="img/file_02.PNG" width="616" height="316"><br>
+  Рис. 3.2.<br>
+  ДС должна базироваться на пакете прикладных программ, включающем все формальные 
+  элементы экспертизы. При наличии такого пакета системотехник мог бы играть роль 
+  администратора базы данных и ППП, взять на себя организацию всей экспертизы.<br>
+</p>
+<p align="center"><br>
+</p>
+<blockquote> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="001.htm" target="_self" onClick="MM_nbGroup('down','group1','Back','',1)" onMouseOver="MM_nbGroup('over','Back','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Back.gif" alt="" name="Back" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="main07.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="003.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  <p align="justify">&nbsp; </p>
+</blockquote>
+</body>
+</html>

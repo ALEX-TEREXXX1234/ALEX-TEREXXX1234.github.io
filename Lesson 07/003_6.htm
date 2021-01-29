@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Экспертные системы. Урок №7</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFCC99">
+<blockquote> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="003_5.htm" target="_self" onClick="MM_nbGroup('down','group1','Back','',1)" onMouseOver="MM_nbGroup('over','Back','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Back.gif" alt="" name="Back" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="003.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  
+</blockquote>
+<p align="center"><strong><font size="5"><em>Определение результирующего отношения 
+  для ранжирований</em></font></strong></p>
+<p align="justify">Во многих практических случаях все альтернативы, входящие в 
+  множество A={a1,a2,...,an}, сравнимы между собой, т.е. образуют один класс сравнимости. 
+  В такой ситуации мнение эксперта, т.е. введенное им на множестве А отношение, 
+  называется ранжированием и может быть представлено в следующем виде:<br>
+  <img src="img/file_03_29.png" width="463" height="239"><br>
+  Таким образом, эксперт предварительно разбивает множество А да клаооы эквивалентности 
+  А1 ,А2,... ,Аm, где, например, Ai={ai1,ai2,...,aik}, включенное в А, а затем 
+  упорядочивает классы эквивалентности. Следовательно, если i&lt;j, то любая альтернатива 
+  из класса Ai предпочтительнее любой альтернативы из класса Aj.<br>
+  Для ранжирования Ri удобно строить матрицу <br>
+  <img src="img/file_03_30.png" width="274" height="106"> </p>
+<p align="justify"><img src="img/file_03_31.png" width="555" height="157"></p>
+<p align="justify">Пусть мнения всех экспертов, входящих в экспертную группу, 
+  имеют вид ранжирований. Тогда можно рассматривать не все множество отношений 
+  R, а только множество всевозможных ранжирований. Результирующее отношение в 
+  этом случае также удобно искать в виде ранжирования. На множестве ранжирований 
+  можно ввести меру близости аналогично тому, как это было сделано раньше. Меру 
+  близости для ранжирований Ri и Rj находят по формуле<br>
+  <img src="img/file_03_32.png" width="534" height="67"></p>
+<p align="justify">Пусть R1,R2,...,Rp - ранжирования, т.е. мнения p экспертов. 
+  Обозначим через Rx результирующее ранжирование, которое является итоговым мнением 
+  всей группы экспертов. Аналогично тому, как это делалось раньше, построим функцию<br>
+  <img src="img/file_03_33.png" width="212" height="56"> <br>
+  и в качестве Rx выберем ранжирование, которое минимизирует f(R). Такое ранжирование 
+  называется медианой Кемени для R1,R2,...,Rp. Представим функцию f(R) в следующем 
+  виде:<br>
+  <img src="img/file_03_34.png" width="537" height="287"> <br>
+  С помощью матрицы потерь можно найти результирующее отношение Rx, которое минимизирует 
+  функцию f(R). Для этого используется следующий эвристический алгоритм:<br>
+  1. Используя заданные ранжирования R1,R2,...,Rp, строим матрицу потерь p1=p.<br>
+  2. Суммируем элементы матрицы p1 по строкам. Пусть Si - сумма элементов i-й 
+  строки матрицы p1.<br>
+  3. Среди чисел Si находим минимальное. Пусть это будет число Sj1.<br>
+  4. Выделяем альтернативу aj1 . Она будет занимать в ранжировке R* первое место.<br>
+  5. Полагаем s1 = sj1 .<br>
+  6. Вычёркиваем в матрице p1 j-ю cтроку и j -й столбец, получаем новую матрицу 
+  Р2.<br>
+  7. Суммируем элементы матрицы Р2 по cтрокам.<br>
+  8. Среди полученных cумм находим минимальную. Пуcть это будет sj2.<br>
+  9. Выделяем альтернативу aj2 , которая в R* займет второе меcто,<br>
+  10. Полагаем s2=s1+sj2.<br>
+  11. В матрице Р2 вычеркиваем j2-ю cтроку и j2-й столбец, получаем Р3 и т.д. 
+  Описанную процедуру повторяем n раз и в итоге получаем ранжировку<br>
+  <img src="img/file_03_35.png" width="141" height="143"> <br>
+  причем f(R*)=s_n. <br>
+  С ранжировкой R* осуществляем следущие операции:<br>
+  1. Рассматриваем пару (a_(j,n-1), a_(j,n)) самых низших альтернатив. В матрице 
+  потерь Р находим элементы P_j,(n-1),j,n и P_j,n,j,(n-1).<br>
+  2. Проверяем неравенство P_j,(n-1),j,n&lt;=P_j,n,j,(n-1). <br>
+  Если неравенство выполняется, то переходим к следующей паре (a_j,(n-2), a_j,(n-1)) 
+  и производим аналогичные действия. Если неравенство не выполняется, то в ранжировании 
+  R* меняем местами альтернативы, поднимаемся на одну альтернативу вверх и повторяем 
+  процедуру. Совершив ряд шагов, получим результирующее ранжирование Rx.<br>
+  Если экспертиза проводится по методу Дельфи, то после того как найдено результирующее 
+  отношение Rx, определяют расстояния от Rx до R1,R2,...,Rp и среди расстояний 
+  Ro(Rx,R1), Ro(Rx,R2),..., Ro(Rx,Rp) находят наибольшие и наименьшие. Эксперты, 
+  мнения которых наиболее удалены от Rx и наиболее близки к Rx , должны дать обоснование 
+  своих мнений, после чего с этими обоснованиями знакомится вся группа экспертов, 
+  а затем проводится новый тур экспертизы и т.д.<br>
+</p>
+<blockquote> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="003_5.htm" target="_self" onClick="MM_nbGroup('down','group1','Back','',1)" onMouseOver="MM_nbGroup('over','Back','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Back.gif" alt="" name="Back" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="003.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  <p align="justify">&nbsp;</p>
+</blockquote>
+</body>
+</html>

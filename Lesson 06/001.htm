@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Экспертные системы. Урок №5</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFCC99">
+<blockquote> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="main06.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="002.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  
+</blockquote>
+<p align="center"><font size="5"><strong>Классификация задач урпавления</strong></font></p>
+<p align="justify"><br>
+  Жизненный цикл летательного аппарата содержит все этапы, присущие любой сложной 
+  технической системе. Укрупненно - это проектирование, производство, эксплуатация. 
+  Специфической особенностью каждого этапа является сложный характер организации. 
+  На всех этапах большую роль все еще играет опыт, интуиция и другие качества 
+  участвующих людей. В некоторых случаях их участие сдерживает повышение эффективности, 
+  научно-технический прогресс. Далее основное внимание будет уделено второму этапу 
+  - производству. Из всех видов деятельности людей в современном производстве 
+  рассмотрим лишь управленческую, от качества которой зависит в большой степени 
+  эффективность производства в целом.<br>
+  Управленческая деятельность имеет ярко выраженные составляющие , в числе которых 
+  можно выделить &quot;начальный толчок&quot; а цепочку действий, направленных 
+  на выработку, а реализацию решения (управляющего воздействия). За первым из 
+  этих элементов закрепилось несколько названий: проблема управления; задача принятия 
+  решения; ситуация, требующая принятия решения (СТПР), и т.п. Чаще мы будем употреблять 
+  последний вариант. Цепочка действий может быть представлена а виде последовательности 
+  фаз:<br>
+  1) выявление (или появление) СТПР;<br>
+  2) сбор информации о СТПР;<br>
+  3) анализ и обработка информации;<br>
+  4) выработка управления (принятие решения);<br>
+  5) реализация решения;<br>
+  6) контроль эффективности управления.<br>
+  Вся производственная деятельность осуществляется по планам, в соответствии с 
+  принятой технологией управления. В рамках плановой организации СТПР можно рассматривать 
+  как некоторые рассогласования, отклонения, которые следует устранить. Например, 
+  отсутствие требуемого материала приводит к цепочке действий, направленных либо 
+  на обеспечение поставки, либо на замену его другим материалом, либо на какие-то 
+  иные варианты. Таким образом, последовательность фаз принятия решения можно 
+  считать реализацией контура обратной связи для ликвидации рассогласования. Качество 
+  работы этого контура и определят в значительной степени эффективность производства. 
+  Следует отметить, что все шесть фаз часто не выполняются строго последовательно 
+  от начала до конца. В некоторых случаях возникает потребность в возврате к предыдущим 
+  фазам, что может привести к реализации многих циклов различного состава, прежде 
+  чем СТПР будет исчерпана. Кроме того, на отдельных фазах могут возникать новые 
+  СТПР.<br>
+  Участие людей в цикле управления может быть разнообразным. Для построения классификации 
+  СТПР выделим основные характерные признаки я укажем возможные значения по каждому 
+  из них (табл. 1.1). Тогда каждая задача принятия решений может быть представлена 
+  набором пяти значений признаков (одно значение по каждому признаку). Такое разбиение 
+  множества всех задач принятия решений на группы позволяет строить типовые процедуры. 
+  Например, задача выявления потребного количества инженеров-математиков для работы 
+  в составе постановщиков задач в отделе АСУ может быть представлена следующим 
+  вектором значений признаков: [8 3 2 4 2]. Все возможные сочетания значений признаков, 
+  приведенных в табл.1.1, позволяют сформировать 2808 типов задач, однако с учетом 
+  ряда частных и не всегда существенных признаков можно прийти к еще большему 
+  разнообразию вариантов, хотя многие из них могут быть реализованы на основе 
+  единой технологии.<br>
+Для примера в приложении приведен перечень задач принятия решений, 
+  присущих стадии производства и отличающихся сферой управления. Заметим, что 
+  этот перечень не претендует на исчерпывающую полноту и высокую степень детализации 
+  (конкретизации) задач. Детализация и установление значений других признаков 
+  представляются целесообразными лишь в условиях конкретного производства.<br>
+  таблица 1.1<br>
+  <img src="img/file_01.PNG" width="851" height="505"><br>
+  Многие задачи перечня очень тесно связаны между собой по входной выходной информация, 
+  поэтому решаться они должны в комплексе.</p>
+<p>&nbsp; </p>
+<blockquote> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="main06.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="002.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  <p align="justify">&nbsp; </p>
+</blockquote>
+</body>
+</html>

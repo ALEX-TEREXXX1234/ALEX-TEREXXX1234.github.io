@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Экспертные системы. Урок №9</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFCC99">
+<blockquote> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="002.htm" target="_self" onClick="MM_nbGroup('down','group1','Back','',1)" onMouseOver="MM_nbGroup('over','Back','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Back.gif" alt="" name="Back" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="main09.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="004.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  
+</blockquote>
+<p align="center"><strong><font size="5">Технические средства разработки и эксплуатации 
+  ЭС</font></strong></p>
+<p align="justify">Технические средства построения ЭС делятся на три категории:</p>
+<p align="justify">1) специализированные рабочие стадии (Лисп-машины в США, Пролог-машины 
+  в Японии и объектно-ориентированные машины в Европе);<br>
+  2) Лисп-сопроцессоры; 3) традиционные технические средства, применяемые в СОД.<br>
+  Построение и эксплуатация ЭС существенно упрощаются при использовании интеллектуальных 
+  рабочих станций типа SUN, Apollo, имеющих специальные аппаратные и программные 
+  средства, а также ЭВМ для обработки символьной информации - символьные ЭВМ : 
+  Alpha, Explorer, Connection, Dado,Faim, Huper Cube,Symbolic, Xerox.<br>
+  1987 г. ознаменовался окончанием спроса на специализированные Лисп-машины. Этому 
+  способствовало широкое распространение ПЭВМ. Предполагается, что вместо Лисп-машин 
+  будут использоваться Лисп-сопроцессоры, подключаемые к ПЭВМ. Разработка сопроцессоров 
+  ориентирована на ПЭВМ Apple MAC П. Считается, что сопроцессоры будут иметь кратковременный 
+  спрос и будут заменены электронными блоками типа SPARC, обладающими возможностями 
+  обработки символьных данных.<br>
+  В качестве технической базы для ЭС также используются широко распространенные 
+  ЭВМ типа PC ,Sun, Apollo, VAX, IBM-370 и Macintosh , EC-1840, EC-1841. Персональные 
+  ЭВМ и рабочие станции используются для создания небольших и средних по размеру 
+  ЭС. Малые ЭВМ SUN, Apollo, VAX применяются для создания средних и больших ЭС. 
+  Универсальная ЭВМ IBM-370 используется как основа для создания средних, больших 
+  и многопользовательских ЭС. Наибольшее число ЭС базируется на ЭВМ типа SUN ( 
+  61%, по данным фирмы Dataquest), а сама фирма SUN 5% дохода получает от реализации 
+  оборудования для ЭС. Этой фирмой разработан символьный сопроцессор, позволяющий 
+  обрабатывать тексты на языке Лисп.<br>
+  Фирма TI предполагает в 90-е годы использовать такие средства, как Explorer, 
+  сопроцессор Micro-Explorer, средства на базе языка Scheme, в том числе PC-plus 
+  и PC-easy как доказавшие свою работоспособность и надежность в 80-е годы. Намечено 
+  также производство электронных блоков для языка Лисп и средств разработки ЭС 
+  на ПЭВМ типа PC.<br>
+  В течение ближайших двух - пяти лет фирма TI рассчитывает перейти на новое техническое 
+  и программное обеспечение ЭС. Будет осуществлен переход на ЭВМ типа RISC с операционной 
+  системой UNIX. С этой целью предполагается перейти к следующему поколению электронных 
+  блоков - SPARC, которые будут находиться как бы над ОС UNIX, обеспечивая реализацию 
+  функций динамического набора данных (dinamic data typing capabilities) и методов 
+  символьной обработки данных .(фирма IBM называет такие методы обработки данных 
+  средой для обработки знаний - КРЕ, т.е. Knowledge Processing Environment ).<br>
+  На более высокой ступени иерархии предполагается применять проблемно- и предметно-ориентированные 
+  средства, сочетающие лучшие свойства систем автоматизации программирования CASE, 
+  средств построения ЭС и объектно-ориентированных средств программирования (ООР).<br>
+  Фирмы IBM и Apple стремятся к созданию средств, сочетающих свойства CASE, OOP.<br>
+  Стоимость системы, состоящей из рабочей станции Explorer и системы извлечения 
+  знаний KEE, составляет 40 тыс. ф.ст. Стоимость ЭВМ PC/AT, включая оболочки ЭС 
+  Leonardo или Crystal существенно ниже - 3 тыс. ф.ст. Производительность труда 
+  на рабочей станции Explorer низка: только загрузка системы требует 45 мин, время 
+  реакции - большое, не удовлетворяющее пользователей. Использование ЭВМ PC/AT 
+  вместо Explorer характеризуется в 6 раз более высокой производительностью, а 
+  время загрузки ЭС сокращается примерно в 45 раз.<br>
+  Фирма Sodima (Канада; Франция) разработала электронную схему KIM для реализации 
+  инструкций языков Лисп и Пролог. Схема базируется на RISC -архитектуре и предназначена 
+  для символьной обработки данных. Она включает 32-битовый процессор, работающий 
+  на частотах 10, 16 и 20 мГц с производительностью 10 млн.оп./с. Производительность 
+  схемы сравнима с процессором типа RISC-SUN Sparc и MIPS-2000, но является более 
+  эффективной при работе с ЭС. Обеспечивается обработка 3600 логических правил 
+  в секунду, в то время как на станции SUN-3160 обеспечивается обработка только 
+  200 правил в секунду. ПО включает компилятор для LeLisp макроассемблер и операционную 
+  систему на основе базы знаний, называемую KOS Knowledge Based Operating System 
+  разработка компиляторов для языков Common Lisp, пролог и Си. Дальнейшее совершенствование 
+  схемы предполагает увеличение тактовой частоты до 30 мГц, развитие функции мультипроцессорной 
+  обработки (до 16 процессоров в гиперкубической топологии), что обеспечит производительность 
+  до 100 млн. оп./с. Анализ показывает, что при разработке ЭС за рубежом в настоящее 
+  время предпочтение отдается мини-, супермини- и большим ЭВМ, в меньшей степени 
+  используются персональные ЭВМ и рабочие станции. Однако применение ПЭВМ для 
+  разработки ЭС расширяется. Весьма широко ПЭВМ используются на стадиях создания 
+  демонстрационного и исследовательского прототипов, а в дальнейшем с помощью 
+  специальных пакетов и трансляторов переводятся на языки мини- и универсальных 
+  ЭВМ, на которых, собственно, и создаются ЭС.<br>
+  В СССР наибольшее применение при построении ЭС нашли ПЭВМ, ибо только с появлением 
+  последних пользователи получили реальную возможность общения с ЭВМ, создания 
+  надежно работающих ЭС. Вместе с тем технические возможности современных ПЭВМ 
+  недостаточны для создания мощных и эффективных ЭС, особенно для работы в реальном 
+  масштабе времени. Следует учитывать, что современные отечественные ЭС только 
+  начинают разрабатываться и их характеристики далеки от требуемых.<br>
+</p>
+<blockquote> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="002.htm" target="_self" onClick="MM_nbGroup('down','group1','Back','',1)" onMouseOver="MM_nbGroup('over','Back','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Back.gif" alt="" name="Back" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="main09.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="004.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  <p align="justify">&nbsp;</p>
+</blockquote>
+</body>
+</html>

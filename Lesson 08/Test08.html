@@ -1,0 +1,130 @@
+<html>
+<head>
+<title> Экспертные системы. Тестовые задания </title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<SCRIPT language=JavaScript>
+<!--
+da=0;da1=0
+function wda(){
+da++
+if ((da==1200)&&(da1!=1)){
+da=0; da1=1;
+alert("Ваше время истекло. Результаты теста - в конце страницы.")
+w()
+document.location.href="#down"}
+else setTimeout("wda()",1000)
+}
+wda()
+
+br="\n"
+if (navigator.appVersion.lastIndexOf('Win')!=-1) br="\r\n"
+function w(){
+da1=1;
+N=10;
+u0=new Array();		res="4314234431"
+u2=new Array();
+tr=N;
+k=0;
+oce=0;
+oce1=1;
+un=""
+re=1;
+ for (var i=1; i<=N;i++){ u0[i]=-1;
+   for (var j=0; j<4;j++){if (eval("document.f1.i"+i+"["+j+"].checked==true")) u0[i]=j+1;}
+      if (u0[i]!=res.charAt(i-1)){tr--;k++;u2[k]=i;}
+       }
+ 
+ oce=100*tr/N; 
+ if (k>0){un="Неверные ответы на вопросы:"+br;for (i=1;i<k;i++){un=un+" "+u2[i]+",";if(Math.round(i/30)*30==i) un=un+br}; un=un+" "+u2[k]+"."}
+ if (tr>2) oce1=2;
+ if (tr>4) oce1=3;
+ if (tr>6) oce1=4;
+ if (tr>8) oce1=5;
+ document.f2.t2.value="Оценка: "+oce1+"."+br+"Правильных ответов "+tr+" из "+N+". "+br+un;
+ document.f1.btn.disabled = true;
+}
+
+//-->
+</SCRIPT>
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR></head>
+
+<body bgcolor="#FFCC99">
+<div align="center">
+<H2>Тестовые задания по теме №8</H2>
+<font color="000000" size="+1">
+</div>
+
+<form name=f1>
+      <BR>
+      Время выполнения - 20 мин. 
+      <OL><BR>
+        <LI> Что такое ЧМП?
+          <br><INPUT type=radio value=1 name=i1> а) человеко-моральная помощь;
+          <br><INPUT type=radio value=2 name=i1> б) человеко-моральная процедура;
+          <br><INPUT type=radio value=3 name=i1> в) человеко-машинная помощь;
+          <br><INPUT type=radio value=4 name=i1> г) человеко-машинная процедура;
+<br><br>
+          <br><LI> Сколько уровней использования ЭВМ по степени автоматизации операций преобразования информации выделяют при описании ЧМП?
+          <br><INPUT type=radio value=1 name=i2> а) один;
+          <br><INPUT type=radio value=2 name=i2> б) два;
+          <br><INPUT type=radio value=3 name=i2> в) три;
+          <br><INPUT type=radio value=4 name=i2> г) четыре;
+<br><br>
+          <br><LI> Что такое СРВ?
+          <br><INPUT type=radio value=1 name=i3> а) система разделения времени;
+          <br><INPUT type=radio value=2 name=i3> б) системы распределения времени;
+          <br><INPUT type=radio value=3 name=i3> в) системы раздвоения времени;
+          <br><INPUT type=radio value=4 name=i3> г) системы раннего времени;
+<br><br>
+          <br><LI> Сколько существует основных СРВ?
+          <br><INPUT type=radio value=1 name=i4> а) 1;
+          <br><INPUT type=radio value=2 name=i4> б) 3;
+          <br><INPUT type=radio value=3 name=i4> в) 10;
+          <br><INPUT type=radio value=4 name=i4> г) 5;
+<br><br>
+          <br><LI> Сколько существует типов алфавитно-цифрового диалога?
+          <br><INPUT type=radio value=1 name=i5> а) 11;
+          <br><INPUT type=radio value=2 name=i5> б) 12;
+          <br><INPUT type=radio value=3 name=i5> в) 13;
+          <br><INPUT type=radio value=4 name=i5> г) 14;
+<br><br>
+          <br><LI> Сколько существует основных этапов принятия решения с помощью экспертов?
+          <br><INPUT type=radio value=1 name=i6> а) 5;
+          <br><INPUT type=radio value=2 name=i6> б) 8;
+          <br><INPUT type=radio value=3 name=i6> в) 11;
+          <br><INPUT type=radio value=4 name=i6> г) 13;
+<br><br>
+          <br><LI> В силу особенностей работы ЛПР и того, что он, как правило, не имеет достаточной подготовки в области программно-математических методов, его диалоговые средства доступа должны отвечать следующим требованиям (выбрать не правильный ответ):
+          <br><INPUT type=radio value=1 name=i7> а) Диалоговая система должна быть подключена к информационно-справочной системе;
+          <br><INPUT type=radio value=2 name=i7> б) Диалоговые средства ЛПР должны позволять ему осуществлять подбор экспертов;
+          <br><INPUT type=radio value=3 name=i7> в) Диалоговая система должна воспринимать сообщения и выдавать их на языке, близком к естественному, или же в форме, требующей минимальной подготовки;
+          <br><INPUT type=radio value=4 name=i7> г) Для работы с пакетами программ экспертного оценивания не нужны специальные программно-математические средства, позволяющие инициировать начало экспертизы и получать в удобной форме ее результаты;
+<br><br>
+          <br><LI> Какое требование не нужно учитывать при разработке диалоговых средств для экспертов?
+          <br><INPUT type=radio value=1 name=i8> а) С помощью своих диалоговых средств эксперт должен иметь возможность получать вспомогательную информацию как об объекте экспертизы, так и о ее результате;
+          <br><INPUT type=radio value=2 name=i8> б) Сбор данных от экспертов должен осуществляться автоматически, по ранее разработанным алгоритмам;
+          <br><INPUT type=radio value=3 name=i8> в) Свои ответы эксперт должен помещать в специальные формы документов, которые ему выдаются на экран дисплея;
+          <br><INPUT type=radio value=4 name=i8> г) Диалоговые средства ЛПР должны позволять ему осуществлять подбор экспертов;
+<br><br>
+          <br><LI> Что не входит в обязанности специалиста-системотехника?
+          <br><INPUT type=radio value=1 name=i9> а) помощь ЛПР формализовать проблему;
+          <br><INPUT type=radio value=2 name=i9> б) выбор наиболее приемлемого метода организации экспертизы;
+          <br><INPUT type=radio value=3 name=i9> в) быть экспертом;
+          <br><INPUT type=radio value=4 name=i9> г) выбор метода оценки альтернатив;
+<br><br>
+          <br><LI> Чем определяется структура диалогового графа?
+          <br><INPUT type=radio value=1 name=i10> а) спецификой класса решаемых задач;
+          <br><INPUT type=radio value=2 name=i10> б) спецификой метода оценки альтернатив;
+          <br><INPUT type=radio value=3 name=i10> в) спецификой информационно-справочной системы;
+          <br><INPUT type=radio value=4 name=i10> г) спецификой системы распределения времени;
+<br><br>
+      </LI></OL>
+<center>
+<INPUT TYPE=button name=btn VALUE="Показать результат" onClick="javascript:w()">
+</form>
+<br>
+<form name=f2>
+<Textarea name=t2 rows=8 cols=40 readonly> Результат тестирования будет здесь. </Textarea>
+</form>
+</body>
+</html>

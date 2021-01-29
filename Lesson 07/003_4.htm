@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Экспертные системы. Урок №7</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFCC99">
+<blockquote> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="003_3.htm" target="_self" onClick="MM_nbGroup('down','group1','Back','',1)" onMouseOver="MM_nbGroup('over','Back','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Back.gif" alt="" name="Back" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="003.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="003_5.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  
+</blockquote>
+<p align="center"><strong><font size="5"><em>Построение меры близости на множестве 
+  бинарных отношений</em></font></strong></p>
+<p align="justify">Пусть А - множество альтернатив. Будем рассматривать произвольные 
+  бинарные отношения на этом множестве, т.е. любые подмножества декартова квадрата 
+  А2 . Некоторые из этих отношений могут быть мнениями экспертов. Обозначим символом 
+  R множество всех бинарных отношений, определенных на множестве альтернатив А, 
+  т.е.<br>
+  <img src="img/file_03_19.png" width="179" height="34"><br>
+  В дальнейшем одним и тем же символом Ri будем обозначать и конкретное отношение, 
+  и матрицу, которая описывает это отношение, поскольку отношение однозначно определяет 
+  матрицу, а матрица - соответствующее отношение. Матрица Ri содержит только 0 
+  и 1 и является квадратной матрицей n-го порядка. Поэтому каждое место в матрице, 
+  а таких мест имеется n2, можно заполнить двумя способами, следовательно, число 
+  таких матриц, т.е. мощность множества R , равна 2^(n*n). Таким образом, множество 
+  R всех бинарных отношений будем интерпретировать как множество всех матриц, 
+  описывающих эти отношения.<br>
+  Прежде чем вводить на множестве R меру близости, определим на этом множестве 
+  тернарное (трехместное) отношение “alfa” - &quot;между&quot;, т.е. будем говорить, 
+  что отношение Rk находится между отношениями Ri и Rj , если справедливо соотношение<br>
+  <img src="img/file_03_20.png" width="232" height="45"><br>
+  где - <img src="img/file_03_21.png" width="80" height="30">обычные операции 
+  объединения и пересечения отношений , описанные ранее. Если отношения Ri, Rj, 
+  Rk находятся в тернарном отношении, то положим<br>
+  <img src="img/file_03_22.png" width="325" height="111"><br>
+  Введем меру близости на множеотве R с помощью системы аксиом . Эту меру близости 
+  между отношениями Ri и Rj обозначим Ro(Ri,Rj). Тогда она определится следующими 
+  аксиомами:<br>
+  1. Для любых Ri,Rj, принадлежащих R справедливо неравенство Ro(Ri,Rj)&gt;=0, 
+  причем равенство Ro(Ri,Rj)=0 выполняется тогда и только тогда, когда Ri=Rj.<br>
+  2. Для любых Ri, Rj, принадлежащих R справедливо равенство Ro(Ri,Rj)=Ro(Rj,Ri).<br>
+  3. Если alfa(Ri,Rj,Rk)=1, то справедливо соотношение<br>
+  <img src="img/file_03_23.png" width="439" height="34"><br>
+  4. Минимальное расстояние между несовпадающими отношениями<br>
+  равно 1, т.е. min Ro(Ri,Rj)=1<br>
+  Каждой паре отношений Ri,Rj, принадлежащих R поставим в соответствие число<br>
+  <img src="img/file_03_24.png" width="222" height="43"><br>
+  которое, как можно показать, удовлетворяет аксиомам 1-4, определяющим меру близости 
+  единственным способом. Здесь b_km и d_km элементы матриц Ri и Rj соответственно, 
+  занимающие в них (k,m)-место.<br>
+</p>
+<blockquote> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="003_3.htm" target="_self" onClick="MM_nbGroup('down','group1','Back','',1)" onMouseOver="MM_nbGroup('over','Back','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Back.gif" alt="" name="Back" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="003.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="003_5.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  <p align="justify">&nbsp;</p>
+</blockquote>
+</body>
+</html>

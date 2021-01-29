@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Экспертные системы. Урок №7</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFCC99">
+<blockquote> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="003_2.htm" target="_self" onClick="MM_nbGroup('down','group1','Back','',1)" onMouseOver="MM_nbGroup('over','Back','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Back.gif" alt="" name="Back" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="003.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="003_4.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  
+</blockquote>
+<p align="center"><strong><font size="5"><em>Элементы теории отношений</em></font></strong></p>
+<p align="justify">Рассмотрим произвольное конечное множество альтернатив <br>
+  <img src="img/file_03_03.png" width="165" height="33"><br>
+  Декартовым квадратом этого множества назовем новое множество<br>
+  <img src="img/file_03_04.png" width="289" height="37"><br>
+  Таким образом, декартов квадрат образован всеми упорядоченными парами (ai, aj), 
+  построенными из элементов множества А. Следует иметь в виду, что<br>
+  <img src="img/file_03_05.png" width="616" height="251"> </p>
+<p align="justify">Определение1. Бинарным отношением на множестве А называет любое 
+  подмножество R декартова квадрата A2<br>
+  Таким образом, говорят, что на множестве А задано бинарное отношение R, если 
+  R содержится в A2. Элементы ai, aj, принадлежащие А, находятся в отношении R 
+  (записывают: ai R aj). Если (ai, aj) принадлежит R, т.е. в этом случае имеется 
+  правило, которое по любой паре (ai,aj) позволяет установить, находятся ли элементы 
+  ai и aj в отношении R или не находятся. В конкретных случаях отношение R может 
+  иметь сцециальное название, например, &quot;больше или равно&quot;, &quot;предшествует&quot;, 
+  &quot;предпочтительнее&quot; и т.д. Для записи бинарного отношения R меняются 
+  следующие способы:<br>
+  1) перечисление всех элементов множества R;<br>
+  2) выделение на рисунке декартова квадрата A2 (аналогичном рис. 2.4) точек, 
+  входящих в R;<br>
+  3) изображение графа, вершинами которого являются элементы множества А, а дуга 
+  соединяет вершины ai,aj тогда и только тогда, когда элемент ai находится в отношении 
+  R c aj, причем в этом случае дуга направлена от ai к aj;<br>
+  4) задание матрицы<br>
+  <img src="img/file_03_06.png" width="216" height="98"><br>
+  отношения R . Элементы этой матрицы определяются следующим способом: <br>
+  <img src="img/file_03_07.png" width="517" height="67"><br>
+  Пример 2.4. Рассмотрим множество<br>
+  <img src="img/file_03_08.png" width="494" height="127"><br>
+  <img src="img/file_03_09.png" width="536" height="236"><br>
+  Для построения матрицы R отношения R нужно предварительно найти вcе элементы 
+  этой матрицы, а затем построить саму матрицу. В данном случае матрица R имеет 
+  вид <br>
+  <img src="img/file_03_10.png" width="185" height="112"><br>
+  Следует отметить, что описание отношений с помощью матриц наиболее удобно тогда, 
+  когда дальнейшая работа с отношениями осуществляется с помощью вычислительной 
+  техники.<br>
+  Существуют и другие способы матричного описания бинарных отношений, например, 
+  элементы r_ij матрицы R могут строиться по правилу<br>
+  <img src="img/file_03_11.png" width="468" height="144"><br>
+  Наряду с бинарными отношениями на множестве A можно рассматривать и m-арные 
+  отношения на этом множестве. m-арным отношением на множестве А называют любое 
+  подмножество множества<br>
+  <img src="img/file_03_12.png" width="622" height="58"><br>
+  Бинарное отношение может обладать различными свойcтвами. Рассмотрим вкратце 
+  некоторые из них.<br>
+  Определение 2. Бинарное отношение R называется рефлексивным, если для любого 
+  ai, принадлежащее А, выполняется ai R aj.<br>
+  То есть если отношение R рефлексивно, то каждый элемент множества А находится 
+  в отношении R с самим собой.<br>
+  Определение 3. Бинарное отношение R называется антирефлексивным, если для любого 
+  ai, принадлежащее А, выполняется ai ~R ai.<br>
+  Здесь символ ~R означает, что элемент ai не находится в отношении R с самим 
+  собой.<br>
+  Определение 4. Бинарное отношение R называется симметричным,<br>
+  <img src="img/file_03_13.png" width="435" height="60"><br>
+  Определение 5. Бинарное отношение R называется асимметричным,<br>
+  <img src="img/file_03_14.png" width="360" height="41"><br>
+  Определение 6. Бинарное отношение R называется антисимметричным, <br>
+  <img src="img/file_03_15.png" width="383" height="33"> <br>
+  Определение 7. Бинарное отношение R называется транзитивным, если<br>
+  <img src="img/file_03_16.png" width="347" height="26"><br>
+  Определение 8. Бинарное отношением называется связным, если<br>
+  <img src="img/file_03_17.png" width="317" height="26"><br>
+  Следует отметить, что не любое отношение R обладает всеми перечисленными свойствами. 
+  Используя эти свойства, множество всех отношений, построенных на множестве А, 
+  можно разбить на ряд классов. Рассмотрим некоторые из них.<br>
+  Определение 9. Отношение R называется отношением эквивалентности (или эквивалентностью), 
+  если это отношение:<br>
+  1) рефлексивно;<br>
+  2) симметрично;<br>
+  3) транзитивно.<br>
+  О таких отношениях говорят, что они образуют класс эквивалентностей.<br>
+  Определение 10. Отношение R называется толерантностью, если оно:<br>
+  1) рефлексивно;<br>
+  2) симметрично.<br>
+  Определение 11. Отношение R называется отношением частичного порядка, если оно:<br>
+  1) рефлексивно;<br>
+  2) антисимметрично;<br>
+  3) траязитивно.<br>
+  Определение 12. Отношением называется отношением линейного порядка, если оно:<br>
+  1) рефлексивно;<br>
+  2) антисимметрично;<br>
+  3) транзитивно;<br>
+  4) связно.<br>
+  Перечисленные виды отношений встречаются на практике наиболее часто, однако 
+  существуют и другие виды отношений.<br>
+  Если множество А - это множество альтернатив, то каждый эксперт, работая с альтернативами, 
+  строит на множестве А свое отношение. Таким образом, мнение эксперта в этом 
+  случае можно интерпретировать как некоторое отношение R на множестве А. Назовем 
+  это отношение R - предпочтением, т.е. если ai R aj , то будем говорить, что 
+  альтернатива ai предпочтительнее альтернативы aj. Естественно считать, что отношение 
+  предпочтительности является рефлексивным отношением, поскольку альтернатива 
+  ai сравнима в этом смысле сама с собой (хотя можно считать это же отношение 
+  антирефлексивным). Связным это отношение будет тогда, когда все альтернативы 
+  сравнимы по этому отношению, в противном случае отношение несвязно. Об остальных 
+  свойствах можно сказать следующее: некоторые из пар (ai, aj), принадлежащих 
+  R обладают отдельными из этих свойств, а другие пары ими не обладают.<br>
+  Используя некоторые из отношений, можно строить другие отношения, т.е. над отношениями 
+  можно осуществлять некоторые из операций. Пусть даны два отношения Ri и Rj на 
+  множестве А. Ri и Rj есть подмножества множества А, поэтому можно образовать 
+  пересечение этих подмножеств. Это пересечение дает новое отношение R<br>
+  Если отношения Ri и Rj заданы своими матрицами, то элементы матрицы R находятся 
+  по правилу r_km=r_km_i*r_km_j, где r_km, r_km_i, r_km_j — (k,m) элементы матриц 
+  R, Ri, Rj соответственно, а “*” - символ логического умножения.<br>
+  Аналогично можно построить объединение двух отношений<br>
+  <img src="img/file_03_18.png" width="385" height="132"> </p>
+<blockquote> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="003_2.htm" target="_self" onClick="MM_nbGroup('down','group1','Back','',1)" onMouseOver="MM_nbGroup('over','Back','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Back.gif" alt="" name="Back" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="003.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="003_4.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  <p align="justify">&nbsp;</p>
+</blockquote>
+</body>
+</html>
