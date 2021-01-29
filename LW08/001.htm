@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Лабораторная работа №8</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFCC99">
+<blockquote>
+  <div align="left">
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr> 
+        <td><a href="main08.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+        <td><a href="002.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+      </tr>
+    </table>
+  </div>
+</blockquote>
+<div align="center">
+  <p><font size="5"><strong><em>Методические указания к лабораторной работе № 
+    8</em></strong></font></p>
+  <p align="justify">&nbsp;</p>
+</div>
+<blockquote> 
+  <blockquote> 
+    <blockquote> 
+      <div align="justify"><font size="4"><strong><em>Выполнение лабораторной 
+        работы</em></strong></font></div>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<div align="center"> 
+  <p align="justify"><br>
+    1. Запустите NeuroPro.<br>
+    2. Откройте проект USA.npp, созданный в лабораторной работе № 7.<br>
+    3. В окне проекта с помощью кнопки Открыть файл данных загрузите статистику 
+    USA.dbf с результатами выборов.<br>
+    4.Сверните окно данных с помощью кнопки Свернуть.<br>
+    5. Выполните тестирование сети командой главного меню Нейро-сеть. Тестирование. 
+    В результате на экране появится окно Тестирование USANetwork (рис. 1), в котором 
+    отображаются результаты тестирования необученной сети USANetwork. <br>
+    Из результатов тестирования необученной сети видно, что сеть не дала правильный 
+    прогноз ни для одной выборки. Средняя по модулю ошибка составила примерно 
+    0,49. Максимальная по модулю ошибка оказалась около 0,57.<br>
+    6. Сохраните результаты тестирования в текстовом файле:<br>
+    &gt; выполните команду главного меню Файл, Сохранить как...;<br>
+    &gt; в появившемся окне Сохранить как введите имя файла USANetwork_test1;<br>
+    &gt; нажмите на кнопку Сохранить<br>
+    <img src="img/file.png" width="269" height="320"><br>
+    Рис. 1. Результаты тестирования необученной сети USANetwork<br>
+    7. Закройте приложение.</p>
+</div>
+<blockquote>
+  <div align="justify">
+    <p>&nbsp;</p>
+    <p><br>
+      <em><strong>Отчет</strong></em></p>
+  </div>
+</blockquote>
+<div align="justify">
+  <p><br>
+    Отчет по лабораторной работе должен содержать:<br>
+    • наименование и цель работы;<br>
+    • таблицу результатов тестирования необученной нейросети.</p>
+</div>
+<div align="justify"> 
+  <p>&nbsp;</p>
+</div>
+<blockquote>
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="main08.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="002.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+</blockquote>
+<div align="center"></div>
+</body>
+</html>

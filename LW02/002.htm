@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Лабораторная работа №2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFCC99">
+<blockquote>
+  <div align="left"> 
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr> 
+        <td><a href="001.htm" target="_top" onClick="MM_nbGroup('down','group1','Back','',1)" onMouseOver="MM_nbGroup('over','Back','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Back.gif" alt="" name="Back" width="73" height="22" border="0" onload=""></a></td>
+        <td><a href="main02.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      </tr>
+    </table>
+    
+  </div>
+</blockquote>
+<div align="center">
+  <p><strong><font size="6"><em>Задания для самостоятельной работы</em></font></strong></p>
+  <p>&nbsp;</p>
+  <p align="left">Задания предлагаются в следующей последовательности :</p>
+</div>
+<blockquote> 
+  <div align="left"> 
+    <p><br>
+      1) <em>четко поставленные задачи, где требуется лишь «переложить» сформулированные 
+      правила на компьютер;</em><br>
+      2) <em>задачи, где нужно сформулировать правила на основании описания;</em><br>
+      3) <em>задачи, где очерчен лишь круг вопросов, на которые должна отвечать 
+      создаваемая ЭС, правила же создаются учащимися, использующими для этого 
+      свои знания в данной предметной области или жизненный опыт.<br>
+      </em></p>
+  </div>
+</blockquote>
+<div align="left"> 
+  <p>&nbsp;</p>
+</div>
+<blockquote> 
+  <blockquote> 
+    <blockquote> 
+      <div align="left"><a href="2_1.htm" target="_self">1. Определитель растений</a></div>
+      <div align="left"><a href="2_2.htm" target="_self">2. Определитель болезней</a></div>
+      <div align="left"><a href="2_3.htm" target="_self">3. Советы по выбору профессии</a></div>
+      <div align="left"><a href="2_4.htm" target="_self">4. Консультант по инвестициям</a></div>
+      <div align="left"><a href="2_5.htm" target="_self">5. Выбор конфигурации 
+        компьютера</a></div>
+      <div align="left"> 
+        <p>&nbsp;</p>
+      </div>
+    </blockquote>
+  </blockquote>
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="001.htm" target="_top" onClick="MM_nbGroup('down','group1','Back','',1)" onMouseOver="MM_nbGroup('over','Back','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Back.gif" alt="" name="Back" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="main02.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  <p>&nbsp; </p>
+  <blockquote> 
+    <div align="left"></div>
+  </blockquote>
+</blockquote>
+</body>
+</html>

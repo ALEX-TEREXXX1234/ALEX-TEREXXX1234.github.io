@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Лабораторная работа №3</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFCC99">
+<blockquote>
+  <div align="left">
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr> 
+        <td><a href="002.htm" target="_top" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+        <td><a href="2_2.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+      </tr>
+    </table>
+  </div>
+</blockquote>
+<div align="center">
+  <p><strong><font size="5"><em>1 Справочник рыболова</em></font></strong></p>
+  <p>&nbsp;</p>
+  <p align="justify">Создать экспертную систему, позволяющую определить интересующую 
+    вас рыбу и установить те средства, с помощью которых ее нужно ловить.<br>
+    Для определения рыбы использовать следующие вопросы:<br>
+    1. Какого цвета чешуя?<br>
+    Варианты ответов: 1.1. серебро; 1.2. желто-зеленая.<br>
+    2. Какого цвета глаза?<br>
+    Варианты ответов: 2.1. красные: 2.2. с красной точкой; 2.3. светлые; 2.4. 
+    желтые.<br>
+    3. Какого цвета плавники?<br>
+    Варианты ответов: 3.1. красные; 3.2. розовые; 3.3. светлые; 3.4. желто-зеленые.<br>
+    4. Плотно ли лежит чешуя?<br>
+    Варианты ответов: 4.1. да; 4.2. нет. <br>
+    5. Меньше какой длины туловище рыбы (см)? Варианты ответов: 5.1. 10; 5.2. 
+    20; 5.3. 40.<br>
+    Знания по указанному вопросу выглядят следующим образом.<br>
+    • Рыба, имеющая красные глаза и плавники, неплотно лежащую чешую серебряного 
+    цвета и длину туловища меньше 20 см с 90% долей вероятности является плотвой.<br>
+    • Рыба с розовыми плавниками и глазами с красной точкой, неплотно лежащей 
+    серебряной чешуей, с длиной туловища меньше 20 см — красноперка. Вероятность—100%.<br>
+    •Рыба со светлыми глазами и плавниками, с неплотно лежащей серебряной чешуей 
+    и длиной туловища 10 см —уклейка. Вероятность — 70%. Если же длина туловища 
+    рыбы, имеющей данные параметры, равна 20 см, то это —карась. Вероятность —50%.<br>
+    • Рыба с плотно лежащей чешуей желто-зеленого цвета и такими же плавниками, 
+    желтыми глаза и туловищем длиной 20 см —окунь (с вероятностью 80%), а имеющая 
+    длину туловища 40 см — судак (с вероятностью 95%).<br>
+    •Если интересующая нас рыба является либо плотвой, либо карасем, либо красноперкой, 
+    то ловить ее нужно с прикормкой. Вероятность этого факта — 90%.<br>
+    •Если же рыба — окунь или судак, то ловить ее нужно без прикормки. Вероятность—100%.<br>
+    •Если рыба не является ни одной из известных нам, то в этом случае рыба неизвестна, 
+    а ловить нужно было известную.<br>
+    <img src="img/file_02_01.png" width="469" height="205"><br>
+    Рис. 1. Работа ЭС «Справочник рыболовства» в режиме консультации<br>
+    В этом случае консультационное меню при решении данной задачи в программе 
+    VР-ЕХРЕRТ имеет вид, показанный на рис. 1.<br>
+  </p>
+</div>
+<blockquote> 
+  <div align="justify"> 
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr> 
+        <td><a href="002.htm" target="_top" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+        <td><a href="2_2.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+      </tr>
+    </table>
+    <p>&nbsp;</p>
+  </div>
+</blockquote>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Самостоятельная работа</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFCC99">
+<blockquote> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="003.htm" target="_self" onClick="MM_nbGroup('down','group1','Back','',1)" onMouseOver="MM_nbGroup('over','Back','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Back.gif" alt="" name="Back" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="main01.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="005.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  
+</blockquote>
+<p align="center"><font size="5"><strong><em>Задание для самостоятельной работы 
+  №3</em></strong></font></p>
+<blockquote> 
+  <blockquote> 
+    <p><br>
+      <em>Используя данный преподавателем текст, получите его реферат. Объясните 
+      назначение содержимого окон 1, 2, 3.</em></p>
+  </blockquote>
+  <p><br>
+    <em><strong>Формирование гипертекста</strong></em></p>
+</blockquote>
+<p align="justify"><br>
+  Наиболее удобной формой представления текстовой информации является гипертекст. 
+  Пронизывая текстовый массив гиперссылками, он позволяет избежать монотонного 
+  пролистывания страниц и выбирать пути изучения материала, сообразуясь с нашими 
+  знаниями и интересами.<br>
+  Однако, к сожалению, традиционные «гипертекстовые» системы не являются таковыми 
+  на самом деле, несмотря на название, и не реализуют желаемых возможностей — 
+  все пути движения по тексту навязываются нам априороно его разработчиком и каждая 
+  «гиперссылка» отсылает лишь в одно единственное место.<br>
+  TextAnalys автоматически превращает мегабайтный массив текстовой информации 
+  в полноценный гипертекст со множественными гиперссылками, выделив все потенциально 
+  присутствующие смысловые взаимосвязи и переходы. Опорой для гипертекста в TextAnalys 
+  является сеть понятий, автоматически сформированная и содержащая значимые термины 
+  с их смысловыми взаимосвязями и гиперссылками. Ее проекция на исходные тексты 
+  превращает их в гипертекст. При этом в текстах выделяются понятия сети, от которых 
+  становится возможным переход к другим местам текстов, также их содержащим. Более 
+  того, наличие смысловых взаимосвязей позволяет перейти от выделенных понятий 
+  к связанным с ними по смыслу, а от них, в свою очередь, — к соответствующим 
+  участкам текстов и т. д. В результате возникает возможность циклического движения 
+  по цепочке: «выбранный фрагмент текста» — «понятия сети» — «выбранная гиперссылка» 
+  — «фрагмент текста».<br>
+  <img src="img/file_04_01.png" width="439" height="325"><br>
+  Рис. 8. Семантическое понятие «Ломоносова»<br>
+  Рассмотрим экран на рис. 4.8.<br>
+  — В окне 1 выберите вкладку «Семантическая сеть».<br>
+  — Выберите узел «Все» понятия «Ломоносова».<br>
+  — В окне 2 найдите предложение «На основе разработанного выдающимся русским 
+  ученым Михаилом Васильевичем Ломоносовым...» и щелкните по нему дважды. Получим 
+  текст в окне 3.<br>
+  Итак, все проанализированные тексты представляют собой единый гипертекст, в 
+  котором выделенные цветом понятия и их сочетания обеспечивают связи с другими 
+  местами текстов.<br>
+  Для гипертекстовой ссылки надо выделить фрагмент текста и выполнить «Ассоциативный 
+  поиск» функцию, описанную ниже.<br>
+  По умолчанию во всех текстах выделяются наиболее значимые понятия — с весом 
+  не менее 50 (от 50 до 100). Если нужно произвести разметку текстов более (или 
+  менее) подробно, в меню «Настройка» выберите пункт «Параметры видов».</p>
+<p align="justify">&nbsp;</p>
+<blockquote>
+  <p align="justify"><br>
+    <em><strong>Ассоциативный поиск</strong></em></p>
+</blockquote>
+<p align="justify"><br>
+  Наиболее серьезной проблемой, возникающей при работе с текстовым материалом 
+  большого объема, является поиск интересующей информации. Большая удача, если 
+  тексты уже знакомы и удается вспомнить что-либо из входящих в них ключевых слов, 
+  описывающих искомое, — в этом случае с возникшей задачей прекрасно справятся 
+  традиционные информационно-поисковые средства. Но как быть, если мы затрудняемся 
+  точно подобрать слова, если нужно найти что-то новое, о чем ранее мы возможно 
+  вообще не имели понятия? К сожалению, в большинстве случаев возникает именно 
+  подобная ситуация, когда приходится искать «то, точно не зная, что...».<br>
+  Функция ассоциативного поиска позволяет получить ответ на запрос, сформированный 
+  в виде фразы естественного языка, словосочетаний или же просто набора ключевых 
+  слов. При этом извлекаемая в ответ информация может не только иметь другую грамматическую 
+  форму, но и вообще не упоминаться в тексте запроса, однако иметь с ним смысловую 
+  связь.<br>
+  Можно ввести запрос с клавиатуры либо задать его, выбрав участок текста и реализуя 
+  гипертекстовые ссылки. Рассмотрим экран на рис. 9.<br>
+  Для ввода запроса с клавиатуры:<br>
+  — войдите в режим «Поиск» и в меню режима выберите пункт «Ассоциативный поиск»;<br>
+  — в раскрывшемся окне наберите текст запроса и нажмите «Поиск». <br>
+  Для ввода запроса из текста:<br>
+  — в окне 3 выделите мышью интересующий фрагмент текста или выделенные понятия;<br>
+  — щелкните по правой кнопке мыши и выберите пункт «Ассоциативный поиск»;<br>
+  <img src="img/file_04_02.png" width="441" height="324"><br>
+  Рис. 9. Ассоциативный поиск<br>
+  <img src="img/file_04_03.png" width="441" height="325"><br>
+  Рис. 10. Результат ассоциативного поиска<br>
+  — в раскрывшемся окне, где отображен текст запроса, нажмите «Поиск».<br>
+  Результаты ответа на запрос можно увидеть на экране в виде двух списков, аналогичных 
+  показанным на рис. 10.<br>
+  Прежде всего, обратите внимание на список в окне 2. В нем представлены предложения 
+  текстов, включающие ключевые слова запроса — те, которые имеются в сети понятий. 
+  Предложения в списке упорядочены по количеству совпавших понятий. Выбрав интересующее 
+  предложение, дважды щелкните мышью на нем, и в окне 3 появится соответствующий 
+  фрагмент текста.<br>
+  Если же результаты поиска не совсем устраивают, или же надо получить дополнительную 
+  информацию, обратитесь к списку в окне 1 (рис. 4.10). В нем представлены понятия 
+  сети, упорядоченные по близости к запросу (степень близости —от 1 до 100 —показана 
+  цифрой). Обратите внимание, что большинство понятий списка не было упомянуто 
+  в запросе. Однако TextAnalys показывает, что в текстах имеется информация, связанная 
+  по смыслу с искомой. Дальнейшая работа со списком аналогична работе с сетью 
+  понятий.<br>
+</p>
+<blockquote> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="003.htm" target="_self" onClick="MM_nbGroup('down','group1','Back','',1)" onMouseOver="MM_nbGroup('over','Back','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Back.gif" alt="" name="Back" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="main01.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="005.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+  <p align="justify">&nbsp; </p>
+</blockquote>
+</body>
+</html>
