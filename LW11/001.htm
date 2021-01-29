@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Лабораторная работа №11</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFCC99">
+<blockquote>
+  <div align="left">
+    <div align="justify"></div>
+    <blockquote> 
+      <table border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td><a href="main11.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+          <td><a href="002.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+        </tr>
+      </table>
+    </blockquote>
+</div>
+</blockquote>
+<div align="center">
+  <p><font size="5"><strong><em>Методические указания к лабораторной работе № 
+    11</em></strong></font></p>
+</div>
+<blockquote> 
+  <blockquote> 
+    <blockquote> 
+      <div align="justify"><font size="4"><strong><em>Выполнение лабораторной 
+        работы</em></strong></font></div>
+      <div align="justify"></div>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<div align="justify"> 
+  <p><br>
+    1.Запустите пакет NeuroPro.<br>
+    2. Откройте проект USA.npp, созданный в лабораторной работе №7.<br>
+    3. В окне проекта с помощью кнопки Открыть файл данных зафузите статистику 
+    USA.dbf результатами выборов.<br>
+    4. Переключитесь на окно проекта (окно с таблицей не закрывать).<br>
+    5.Обучите сеть, используя метод оптимизации «сопряженные градиенты». Результат 
+    обучения изображен на рис.1.<br>
+    <img src="img/file_01.png" width="303" height="239"><br>
+    Рис. 1. Результат обучения сети<br>
+    6. Оптимизируйте обученную нейронную сеть, уменьшив количество входов нейросети 
+    (это возможно в случае избыточности входных параметров нейросети). Для проверки 
+    и коррекции входов:<br>
+    &gt; выполнить команду главного меню Нейросеть, Сокращение числав ходных сигналов.<br>
+    Результат оптимизации приведен на рис. 2.<br>
+    7. Изучите назначение информации в этом окне.<br>
+    8. произведите анализ значимости входных параметров обученной нейросети с 
+    сокращенным числом входов и сохраните результат в текстовом файле «USANetwork- 
+    значимость входов1.txt» (рис. 3)<br>
+    <img src="img/file_02.png" width="301" height="238"><br>
+    Рис. 2. Результат упрощения сети (сокращение числа входов)<br>
+    <img src="img/file_03.png" width="347" height="298"><br>
+    Рис. 3. Значимость входов после упрощения сети (сокращение числа входов)<br>
+    9. Сравните результаты анализов значимости входов на рис. 3(лаба 9) и 2 и 
+    сделайте выводы о том, какие входы удалены программой и почему.<br>
+    10. Получите прогноз выборов 1985 года с использованием файла данных USA85.dbf 
+    и сохраните результат в текстовом файле USANetwork_test6.txt. Результаты опроса 
+    сети представлены на рис. 4.<br>
+    11. Cделайте выводы относительно изменения точности прогноза.<br>
+    12. Закройте окно с результатами прогноза и откройте файл USA.dbf входной 
+    статистики.</p>
+  <p><img src="img/file_04_01.png" width="386" height="361"><br>
+    Рис.4 Результат опроса обученной сети после сокращения числа входов<br>
+    13. Оптимизируйте обученную нейронную сеть, уменьшив количество нейронов нейросети 
+    (это возможно в случае избыточности этих нейронов): <br>
+    &gt; выполнить команду главного меню Нейросеть, Сокращение числа нейронов.<br>
+    Результат оптимизации приведен на рис. 5.</p>
+  <p><img src="img/file_04_02.png" width="370" height="311"><br>
+    Рис.5 Результат упрощения сети (сокращение числа нейронов)<br>
+    14. Изучите назначение информации в этом окне .<br>
+    15. Получите прогноз выборов 1985 года с использованием файла данных USA85.dbf 
+    и сохраните результат в текстовом файле USANetwork_test7.txt. Результаты опроса 
+    сети представлены на рис. 6.<br>
+    16. Сделайте выводы относительно изменения точности прогноза.<br>
+    17. Закройте окно с результатами прогноза и откройте файл USA85.dbf входной 
+    статистики.</p>
+  <p><img src="img/file_04_03.png" width="376" height="304"><br>
+    Рис. 6 Результат опроса обученной сети после сокращения числа нейронов<br>
+    18. Произведите равномерное упрощение нейросети путем уменьшения количества 
+    подаваемых сигналов на один нейрон.<br>
+    &gt; Выполните команду главного меню Нейросеть, Равномерное упрощение нейросети. 
+    На экране появится окно Равномерное упрощение USANetwork (рис. 7).<br>
+    &gt; Согласитесь с предлагаемым программой максимальным числом сигналов на 
+    нейрон, равным 3 и нажмите на кнопку Упрощение.<br>
+    Результат оптимизации приведен на рис. 8</p>
+  <p><img src="img/file_04_04.png" width="365" height="129"></p>
+  <p>Рис.7 Окно равномерного упрощения нейросети</p>
+  <p><img src="img/file_04_05.png" width="327" height="259"></p>
+  <p>Рис.8 Результат равномерного упрощения сети<br>
+    <img src="img/file_04.png" width="260" height="216"></p>
+  <p>Рис. 9. Результат опроса обученной сети после равномерного её сокращения<br>
+    19. Изучите назначение информации в этом окне .<br>
+    20. Получите прогноз выборов 1985 года с использованием файла данных USA85.dbf 
+    и сохраните результат в текстовом файле USANetwork_test8.txt. Результаты опроса 
+    сети представлены на рис. 9.<br>
+    21. Cделайте выводы относительно изменения точности прогноза.</p>
+  </div>
+<div align="center"> 
+  <p align="justify"> <img src="img/file_05.png" width="485" height="101"></p>
+  <p align="justify">Рис. 10. Результат опроса обученной сети после равномерного 
+    её сокращения<br>
+    22. Закройте окно с результатами прогноза и откройте файл USA.dbf входной 
+    статистики.<br>
+    23. Определите значения весов бинаризованных синапсов:<br>
+    &gt; выполните команду главного меню Настройки, Веса бинаризованных синапсов 
+    (рис. 10); <br>
+    &gt; в появившемся списке выберите пункт ±1.<br>
+    24. Приведите веса синапсов и неоднородных входов нейронов сети к выделенным 
+    значениям:<br>
+    &gt; выполните команду главного меню Нейросеть, Бинаризация весов синапсов 
+    и неоднородных входов.<br>
+    25. Изучите назначение информации в этом окне. Что такое «Zero step»?<br>
+    Результат приведен на рис. 11.<br>
+    <img src="img/file_06.png" width="305" height="241"><br>
+    Рис. 11. Результат бинаризации весов синапсов и неоднородных входов<br>
+    26. Получите прогноз выборов 1985 года с использованием файла данных USA85.dbf 
+    и сохраните результат в текстовом файле USANetwork_test9.txt. <br>
+    Результаты опроса сети представлены на рис. 12.<br>
+    <img src="img/file_07.png" width="265" height="216"><br>
+    Рис. 12. Результат опроса обученной сети после бинаризации весов синапов и 
+    неоднородных входов<br>
+    27. сделайте выводы относительно изменения точности прогноза.<br>
+    28. Получите вербальное описание нейросети (Нейросеть, Вербализация).<br>
+    29.Сохраните результаты в текстовом файле «Вербальное описание USANetwork1». 
+  </p>
+  <p align="justify">&nbsp;</p>
+</div>
+<blockquote> 
+  <blockquote> 
+    <blockquote>
+      <div align="justify"><br>
+        <font size="4"><em><strong>Отчет</strong></em></font></div>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<div align="center">
+  <p align="justify"><br>
+    Отчет должен содержать:<br>
+    • наименование и цель работы;<br>
+    • описание упрощения нейросети в пакете NeuroPro;<br>
+    • объяснение результатов оптимизации нейросети на примере вербального описания.</p>
+  <p> </p>
+</div>
+<div align="justify"></div>
+<blockquote>
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><a href="main11.htm" target="_self" onClick="MM_nbGroup('down','group1','Menu','',1)" onMouseOver="MM_nbGroup('over','Menu','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/Menu.gif" alt="" name="Menu" width="73" height="22" border="0" onload=""></a></td>
+      <td><a href="002.htm" target="_self" onClick="MM_nbGroup('down','group1','For','',1)" onMouseOver="MM_nbGroup('over','For','','',1)" onMouseOut="MM_nbGroup('out')"><img src="img/For.gif" alt="" name="For" width="73" height="22" border="0" onload=""></a></td>
+    </tr>
+  </table>
+</blockquote>
+<div align="center"></div>
+</body>
+</html>
